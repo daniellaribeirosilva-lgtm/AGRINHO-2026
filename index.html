@@ -1,1 +1,714 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agro Sustentável Brasil</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#081c15;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(10px);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 8%;
+    }
+
+    .logo{
+      font-size:1.5rem;
+      font-weight:700;
+      color:#95d5b2;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#95d5b2;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content{
+      max-width:900px;
+      animation:fadeUp 1s ease;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      color:#d8f3dc;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#2d6a4f;
+      border-radius:40px;
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:600;
+    }
+
+    .btn:hover{
+      background:#40916c;
+      transform:translateY(-3px);
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      padding:80px 8%;
+      background:#0b2b20;
+    }
+
+    .stat-card{
+      background:#123524;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .stat-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .stat-card h2{
+      color:#95d5b2;
+      font-size:2.4rem;
+      margin-bottom:10px;
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.8rem;
+      margin-bottom:15px;
+      color:#95d5b2;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#123524;
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      background:#1b4332;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#b7e4c7;
+    }
+
+    .card p{
+      color:#d8f3dc;
+      line-height:1.7;
+      font-size:0.95rem;
+    }
+
+    /* IMAGE SECTION */
+
+    .banner{
+      height:500px;
+      background:
+      linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .banner h2{
+      font-size:3rem;
+      max-width:900px;
+      line-height:1.4;
+    }
+
+    /* QUIZ */
+
+    .quiz{
+      background:#0b2b20;
+      border-radius:25px;
+      padding:50px;
+      text-align:center;
+    }
+
+    .quiz button{
+      margin-top:20px;
+      padding:12px 25px;
+      border:none;
+      border-radius:30px;
+      background:#2d6a4f;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .quiz button:hover{
+      background:#40916c;
+    }
+
+    #quizResult{
+      margin-top:20px;
+      font-size:1.1rem;
+      color:#95d5b2;
+    }
+
+    /* VIDEO */
+
+    .video-container{
+      margin-top:50px;
+      display:flex;
+      justify-content:center;
+    }
+
+    iframe{
+      width:100%;
+      max-width:900px;
+      height:500px;
+      border:none;
+      border-radius:20px;
+    }
+
+    /* CONTACT */
+
+    form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    input, textarea{
+      padding:18px;
+      border:none;
+      border-radius:15px;
+      background:#123524;
+      color:white;
+      font-size:1rem;
+    }
+
+    textarea{
+      resize:none;
+      height:180px;
+    }
+
+    form button{
+      padding:15px;
+      border:none;
+      border-radius:15px;
+      background:#2d6a4f;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    form button:hover{
+      background:#40916c;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#04110c;
+      text-align:center;
+      padding:40px 20px;
+      color:#95d5b2;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .banner h2{
+        font-size:2rem;
+      }
+
+      iframe{
+        height:300px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header>
+    <nav>
+      <div class="logo">Agro Sustentável</div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#producao">Produção</a></li>
+        <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+        <li><a href="#desafios">Desafios</a></li>
+        <li><a href="#solucoes">Soluções</a></li>
+        <li><a href="#interativos">Interativos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>O Futuro do Agro é Sustentável</h1>
+
+      <p>
+        O agronegócio move a economia brasileira e alimenta milhões de pessoas.
+        A tecnologia e a sustentabilidade são o caminho para produzir mais,
+        preservando os recursos naturais das futuras gerações.
+      </p>
+
+      <a href="#producao" class="btn">Saiba Mais</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat-card">
+      <h2>29%</h2>
+      <p>Participação do Agro no PIB brasileiro</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>40%</h2>
+      <p>Das exportações brasileiras vêm do agronegócio</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>70%</h2>
+      <p>Da água captada no mundo é usada na agricultura</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>Milhões</h2>
+      <p>De empregos diretos e indiretos gerados pelo setor</p>
+    </div>
+
+  </section>
+
+  <!-- PRODUÇÃO -->
+
+  <section id="producao">
+
+    <div class="section-title">
+      <h2>Produção e Economia</h2>
+      <p>O Brasil como potência agrícola mundial</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Exportações</h3>
+        <p>
+          O agronegócio brasileiro é responsável por grande parte das exportações
+          nacionais, destacando produtos como soja, milho, café, carne bovina
+          e bioenergia.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Segurança Alimentar</h3>
+        <p>
+          O Brasil desempenha papel estratégico no abastecimento global,
+          garantindo alimentos para diversos países e fortalecendo
+          a balança comercial.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Geração de Empregos</h3>
+        <p>
+          O setor agropecuário movimenta milhões de empregos no campo,
+          na indústria, transporte, tecnologia e exportação.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- BANNER -->
+
+  <section class="banner">
+    <h2>
+      Produzir mais com menos impacto ambiental é o maior desafio do século XXI.
+    </h2>
+  </section>
+
+  <!-- SUSTENTABILIDADE -->
+
+  <section id="sustentabilidade">
+
+    <div class="section-title">
+      <h2>Sustentabilidade no Campo</h2>
+      <p>Tecnologia, inovação e preservação ambiental</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Plantio Direto</h3>
+        <p>
+          Reduz erosão, melhora a fertilidade do solo e ajuda
+          no armazenamento de carbono.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Agricultura de Precisão</h3>
+        <p>
+          Uso de GPS, sensores e inteligência artificial para otimizar insumos,
+          reduzir desperdícios e aumentar produtividade.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Irrigação Inteligente</h3>
+        <p>
+          Sensores de umidade e clima permitem economizar até 30% de água
+          nas lavouras.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Energias Renováveis</h3>
+        <p>
+          Fazendas utilizam energia solar, biogás e eólica para reduzir
+          a dependência de combustíveis fósseis.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>ILPF</h3>
+        <p>
+          A integração lavoura-pecuária-floresta melhora a produtividade,
+          conserva o solo e reduz impactos ambientais.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Agricultura Regenerativa</h3>
+        <p>
+          Recupera o solo, aumenta matéria orgânica e promove
+          o sequestro de carbono.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DESAFIOS -->
+
+  <section id="desafios">
+
+    <div class="section-title">
+      <h2>Desafios Ambientais</h2>
+      <p>Os impactos do crescimento intensivo</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Desmatamento</h3>
+        <p>
+          A expansão agrícola em áreas sensíveis como Amazônia e Cerrado
+          ameaça ecossistemas e biodiversidade.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Uso Excessivo de Água</h3>
+        <p>
+          Sistemas ineficientes de irrigação podem causar desperdício
+          e reduzir recursos hídricos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Gases de Efeito Estufa</h3>
+        <p>
+          A pecuária libera metano e o manejo inadequado do solo
+          aumenta emissões de carbono.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Poluição</h3>
+        <p>
+          O uso incorreto de fertilizantes e defensivos agrícolas
+          pode contaminar água e solo.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SOLUÇÕES -->
+
+  <section id="solucoes">
+
+    <div class="section-title">
+      <h2>Soluções e Inovações</h2>
+      <p>O futuro sustentável do agronegócio brasileiro</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Tecnologia e Dados</h3>
+        <p>
+          Monitoramento por drones, sensores e inteligência artificial
+          melhora a tomada de decisão no campo.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Intensificação Sustentável</h3>
+        <p>
+          Aumentar a produção em áreas já abertas evita novos desmatamentos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Legislação Ambiental</h3>
+        <p>
+          O Código Florestal, APPs e Reservas Legais ajudam na proteção
+          dos ecossistemas brasileiros.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Cases de Sucesso</h3>
+        <p>
+          Diversas propriedades brasileiras já utilizam práticas sustentáveis
+          com aumento de produtividade e menor impacto ambiental.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- VIDEO -->
+
+    <div class="video-container">
+
+      <iframe
+        src="https://www.youtube.com/embed/8V4T9mP1mKU"
+        title="Agricultura Sustentável"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </section>
+
+  <!-- INTERATIVOS -->
+
+  <section id="interativos">
+
+    <div class="section-title">
+      <h2>Interativos</h2>
+      <p>Teste seus conhecimentos sobre sustentabilidade</p>
+    </div>
+
+    <div class="quiz">
+
+      <h3>
+        Qual tecnologia ajuda a reduzir desperdício de água na agricultura?
+      </h3>
+
+      <button onclick="respostaCorreta()">
+        Sensores de umidade e irrigação inteligente
+      </button>
+
+      <button onclick="respostaErrada()">
+        Queimadas e desmatamento
+      </button>
+
+      <div id="quizResult"></div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTATO -->
+
+  <section id="contato">
+
+    <div class="section-title">
+      <h2>Contato</h2>
+      <p>Envie sua opinião ou sugestão</p>
+    </div>
+
+    <form>
+
+      <input type="text" placeholder="Seu Nome" required>
+
+      <input type="email" placeholder="Seu Email" required>
+
+      <textarea placeholder="Sua Mensagem"></textarea>
+
+      <button type="submit">
+        Enviar Mensagem
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 Agro Sustentável Brasil | Desenvolvido para conscientização
+      sobre tecnologia, produção e sustentabilidade no agronegócio.
+    </p>
+
+    <br>
+
+    <p>
+      Fontes: Embrapa, CNA, IBGE, MAPA e estudos ambientais.
+    </p>
+
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function respostaCorreta(){
+      document.getElementById("quizResult").innerHTML =
+      "✅ Correto! A irrigação inteligente ajuda a economizar água e aumentar a eficiência.";
+    }
+
+    function respostaErrada(){
+      document.getElementById("quizResult").innerHTML =
+      "❌ Incorreto! Queimadas e desmatamento prejudicam o meio ambiente.";
+    }
+
+  </script>
+
+</body>
+</html>
