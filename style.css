@@ -1,1 +1,293 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GLOBAIS E RESET
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #081c15; /* Verde ultra escuro de fundo */
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   NAVBAR (Menu de Navegação Superior)
+   ========================================================================== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(8, 28, 21, 0.75); /* Fundo semi-transparente */
+    backdrop-filter: blur(12px); /* Efeito de vidro fosco */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(149, 213, 178, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #95d5b2; /* Verde claro neon para destaque */
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.logo span {
+    color: #b07d62; /* Detalhe em tom de terra */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #d8f3dc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+/* Linha animada ao passar o mouse nos links */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #40916c;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   SEÇÃO HERO (Banner de Abertura do Site)
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 8% 60px 8%;
+    background: radial-gradient(circle at top right, rgba(45, 106, 79, 0.15), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(27, 67, 50, 0.2), transparent 60%);
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #40916c;
+    margin-bottom: 15px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #b7e4c7;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   CONTEÚDO E SEÇÕES GERAIS
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 8%;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #95d5b2;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #b07d62;
+    border-radius: 2px;
+}
+
+/* Grid de duas ou três colunas para a Web (Cards/Estatísticas) */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* ==========================================================================
+   CARDS, CALLOUTS E ELEMENTOS DE INTERAÇÃO
+   ========================================================================== */
+.card {
+    background: rgba(27, 67, 50, 0.3);
+    border: 1px solid rgba(149, 213, 178, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(149, 213, 178, 0.3);
+}
+
+/* Caixas de Alerta (Problemas Ambientais) */
+.alert-box {
+    background: rgba(229, 62, 62, 0.05);
+    border: 1px solid rgba(254, 178, 178, 0.2);
+    border-left: 5px solid #e53e3e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Caixas de Solução (Práticas Sustentáveis) */
+.solution-box {
+    background: rgba(56, 161, 105, 0.05);
+    border: 1px solid rgba(154, 230, 180, 0.2);
+    border-left: 5px solid #38a169;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Simulação das Barras de Progresso */
+.bar-container {
+    background: #1b4332;
+    border-radius: 6px;
+    height: 14px;
+    width: 100%;
+    margin: 10px 0 20px 0;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #40916c, #95d5b2);
+    border-radius: 6px;
+}
+
+/* Seções Interativas (Calculadora / Quiz) */
+.interactive-section {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(176, 125, 98, 0.4);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.quiz-option {
+    background: rgba(27, 67, 50, 0.5);
+    border: 1px solid rgba(203, 213, 224, 0.2);
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.quiz-option:hover {
+    background: rgba(45, 106, 79, 0.6);
+}
+
+.quiz-option.correct {
+    border-left: 5px solid #38a169;
+    background: rgba(56, 161, 105, 0.15);
+}
+
+/* ==========================================================================
+   RODAPÉ (Footer)
+   ========================================================================== */
+footer {
+    background: #040c0a;
+    padding: 40px 8%;
+    text-align: center;
+    border-top: 1px solid rgba(149, 213, 178, 0.05);
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+footer p {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (Ajustes para Dispositivos Móveis)
+   ========================================================================== */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 5%;
+    }
+   
+    .nav-links {
+        display: none; /* Em um projeto real, aqui entraria o menu hambúrguer */
+    }
+   
+    .container {
+        padding: 60px 5%;
+    }
+   
+    .hero-section {
+        padding: 100px 5% 40px 5%;
+    }
+}
+
+Em qui., 11 de jun. de 2026 às 11:25, DANIELLA RIBEIRO DA SILVA <daniella.ribeiro.silva@escola.pr.gov.br> escreveu:
+
+
+
+
+
 
